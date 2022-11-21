@@ -1,0 +1,27 @@
+type Query{
+    #une methode appelé accoutsList qui retourne une liste des objects BankAccount
+    accountsList : [BankAccount]
+    #une methode appelé accountById qui a un param id de type string qui retourne un objet BankAccount
+    bankAccountById (id:String) : BankAccount
+}
+
+type Mutation {
+    addAccount(bankAccountRequestDTO : BankAccountDTO) : BankAccount,
+    updateAccount(id : String, bankAccountRequestDTO : BankAccountDTO) : BankAccount
+    #dans le cas ou la methode est "void" => mettre le type de retour string => qui vas retourner lui meme un "null" => c-à-d operation succes
+    deleteAccount(id : String) : String
+}
+
+type BankAccount{
+    id: String,
+    createdAt : Float,
+    balance : Float,
+    currency : String,
+    type : String
+}
+
+input BankAccountDTO {
+    balance : Float,
+    currency : String,
+    type : String
+}
