@@ -6,10 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.sid.bankaccountservice.enums.AccountType;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 @Entity
 @Data @NoArgsConstructor @AllArgsConstructor @Builder//Builder sert à instancier l'objet de faire generer les attribut de la classe sous forme d'un methode pr les instancier=>voir la class "Main"
@@ -22,4 +19,6 @@ public class BankAccount {
     //type de valeur stocker => String
     @Enumerated(EnumType.STRING)
     private AccountType type;
+    @ManyToOne
+    private Customer customer;
 }

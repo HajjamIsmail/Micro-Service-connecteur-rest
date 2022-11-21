@@ -3,6 +3,8 @@ type Query{
     accountsList : [BankAccount]
     #une methode appelé accountById qui a un param id de type string qui retourne un objet BankAccount
     bankAccountById (id:String) : BankAccount
+    #methode qui permet de retourner list de customer :
+    customers : [Customer]
 }
 
 type Mutation {
@@ -12,12 +14,19 @@ type Mutation {
     deleteAccount(id : String) : String
 }
 
+type Customer {
+    id : ID,
+    name : String,
+    bankAccounts : [BankAccount]
+}
+
 type BankAccount{
     id: String,
     createdAt : Float,
     balance : Float,
     currency : String,
-    type : String
+    type : String,
+    customer : Customer
 }
 
 input BankAccountDTO {
